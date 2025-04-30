@@ -12,7 +12,7 @@ This repository contains custom CLI tools and utility scripts meant to be availa
 After cloning the repository:
 
 ```bash
-git clone git@github.com:your-username/cli-tools.git ~/dev/cli-tools
+git clone https://github.com/lukmay/cli-tools.git ~/dev/cli-tools
 cd ~/dev/cli-tools
 ./activate_tools.sh
 ```
