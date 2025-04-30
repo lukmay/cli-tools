@@ -1,4 +1,16 @@
+#!/bin/bash
 
+BIN_DIR="$HOME/dev/cli-tools/bin"
+TARGET_DIR="/usr/local/bin"
 
-ln -sf ~/dev/cli-tools/bin/pretty_print.sh /usr/local/bin/pretty_print
-chmod +x ~/dev/cli-tools/bin/pretty_print.sh
+for script in "$BIN_DIR"/*; do
+    [ -f "$script" ] || continue  # Skip if not a regular file
+    script_name=$(basename "$script")
+    target_path="$TARGET_DIR/$script_name"
+
+    echo "Linking $script → $target_path"
+    ln -sf "$script" "$target_path"
+    chmod +x "$script"
+done
+
+echo "All tools activated."
