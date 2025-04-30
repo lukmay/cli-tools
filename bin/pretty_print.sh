@@ -630,7 +630,7 @@ BLACKLIST=()
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
-        --exclude=*)
+        --exclude=*|-e=*)
             # Get value after equals sign
             value="${1#*=}"
             if [ -n "$value" ]; then
@@ -643,7 +643,7 @@ while [[ $# -gt 0 ]]; do
             fi
             shift
             ;;
-        --exclude)
+        --exclude|-e)
             # Process next argument if it doesn't start with --
             if [[ $# -gt 1 && ! "$2" =~ ^-- ]]; then
                 # Add each non-empty item to EXCLUSIONS
@@ -658,7 +658,7 @@ while [[ $# -gt 0 ]]; do
                 print_usage
             fi
             ;;
-        --whitelist=*)
+        --whitelist=*|-w=*)
             value="${1#*=}"
             if [ -n "$value" ]; then
                 while IFS= read -r item; do
@@ -669,7 +669,7 @@ while [[ $# -gt 0 ]]; do
             fi
             shift
             ;;
-        --whitelist)
+        --whitelist|-w)
             if [[ $# -gt 1 && ! "$2" =~ ^-- ]]; then
                 while IFS= read -r item; do
                     if [ -n "$item" ]; then
@@ -682,7 +682,7 @@ while [[ $# -gt 0 ]]; do
                 print_usage
             fi
             ;;
-        --blacklist=*)
+        --blacklist=*|-b=*)
             value="${1#*=}"
             if [ -n "$value" ]; then
                 while IFS= read -r item; do
@@ -693,7 +693,7 @@ while [[ $# -gt 0 ]]; do
             fi
             shift
             ;;
-        --blacklist)
+        --blacklist|-b)
             if [[ $# -gt 1 && ! "$2" =~ ^-- ]]; then
                 while IFS= read -r item; do
                     if [ -n "$item" ]; then
